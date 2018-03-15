@@ -1,4 +1,5 @@
 <div class="jet-subscribe-extra-popup">
+    <div class="jet-subscribe-extra-popup__overlay"></div>
 	<div class="jet-subscribe-extra-popup__instance">
 		<div class="jet-subscribe-extra-popup__close">
 			<i class="fa fa-times"></i>

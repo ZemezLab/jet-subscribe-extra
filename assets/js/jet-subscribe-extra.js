@@ -15,7 +15,7 @@
 				}
 			});
 
-			$( document ).on( 'click.JetSubscribeExtra', '.jet-subscribe-extra-popup__close, .jet-subscribe-extra-popup__cover', function( event ) {
+			$( document ).on( 'click.JetSubscribeExtra', '.jet-subscribe-extra-popup__close, .jet-subscribe-extra-popup__overlay', function( event ) {
 				var $popup = $( event.currentTarget ).closest( '.jet-subscribe-extra-popup' );
 
 				$popup.removeClass( 'opened-state' );
