@@ -180,8 +180,6 @@ if ( ! class_exists( 'Jet_Subscribe_Extra' ) ) {
 
 			$template = $this->plugin_path( 'templates/' . $name );
 
-			var_dump($template);
-
 			if ( file_exists( $template ) ) {
 				return $template;
 			} else {
