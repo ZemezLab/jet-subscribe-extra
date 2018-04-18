@@ -74,6 +74,10 @@ if ( ! class_exists( 'Jet_Subscribe_Extra' ) ) {
 
 			add_action( 'elementor/frontend/before_enqueue_scripts', array( $this, 'before_enqueue_scripts' ) );
 
+			add_action( 'elementor/element/jet-subscribe-form/section_instagram_settings/before_section_end', array( $this, 'add_new_controls' ), 10, 2 );
+
+			add_filter( 'jet-elements/subscribe-form/input-instance-data', array( $this, 'update_subscribe_data' ), 10, 2 );
+
 			// Page popup initialization
 			add_action( 'wp_footer', array( $this, 'popup_init' ) );
 
@@ -99,6 +103,39 @@ if ( ! class_exists( 'Jet_Subscribe_Extra' ) ) {
 		 */
 		public function popup_init() {
 			require $this->get_template( 'popup-1.php' );
+		}
+
+		/**
+		 * [add_new_controls description]
+		 * @param [type] $element [description]
+		 * @param [type] $args    [description]
+		 */
+		public function add_new_controls( $element, $args ) {
+
+			$element->add_control(
+				'use_succsess_popup',
+				array(
+					'label'        => esc_html__( 'Use Succsess Popup', 'jet-subscribe-extra' ),
+					'type'         => Elementor\Controls_Manager::SWITCHER,
+					'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+					'label_off'    => esc_html__( 'No', 'jet-elements' ),
+					'return_value' => 'yes',
+					'default'      => 'false',
+				)
+			);
+		}
+
+		/**
+		 * [update_subscribe_data description]
+		 * @param  [type] $data     [description]
+		 * @param  [type] $instance [description]
+		 * @return [type]           [description]
+		 */
+		public function update_subscribe_data( $data, $instance ) {
+
+			$data['use-succsess-popup'] = filter_var( $instance->get_settings('use_succsess_popup'), FILTER_VALIDATE_BOOLEAN );
+
+			return $data;
 		}
 
 		/**

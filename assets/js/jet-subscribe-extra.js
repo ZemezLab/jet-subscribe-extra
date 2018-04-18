@@ -8,9 +8,10 @@
 			$( window ).on( 'jet-elements/subscribe', function( event ) {
 				var elementId   = event.elementId,
 					successType = event.successType,
+					inputData   = event.inputData,
 					$popup      = $( '.jet-subscribe-extra-popup' );
 
-				if ( 'success' === successType ) {
+				if ( 'success' === successType && inputData['use-succsess-popup'] ) {
 					$popup.addClass( 'opened-state' );
 				}
 			});
